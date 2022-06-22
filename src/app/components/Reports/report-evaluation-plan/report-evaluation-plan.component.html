@@ -1,0 +1,70 @@
+
+<div class="col-md-12">
+    <ul  ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs tope-margen-ngnav">
+        <li [ngbNavItem]="1" >
+            <a ngbNavLink class="colortitulo" >{{titulo}}</a>
+            <ng-template ngbNavContent>
+                <form>
+                    <!-- <div class="row"> -->
+                        <!-- <div class="col-md-12 "> -->
+                            <br>
+                            <div class="box box-primary posicion-tope">
+                                <div class="box-header with-border d-block">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3
+                                                [ngClass]="{'letra_titulo_nuevo': editando === 0 , 'letra_titulo_editando': editando === 1}">
+                                                {{titulo}}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" id="apartado_controlForm">
+
+                                    <!-- hawk inicia -->
+
+                                    <div class="container-fluid">
+
+                                        <form class="col-md-12" style="margin-left: -15px;">
+                                            <!-- empieza la construccion de los campos dinamicos -->
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <app-user-control-search [ControlsFilter]="ctrlFiltersBusqueda"
+                                                    [headerInput]="camposHeaderTabla"
+                                                    [resultSetData]="responseDataGrid"
+                                                    (eventSearch)="buscarPor($event)"
+                                                    (eventEdit)="rowSelected($event)"
+                                                    >
+                                                    </app-user-control-search>  
+                                                
+                                                </div>
+    
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button type="button" class="btn btn-outline-success btn-block floatR" 
+                                                    (click)="generarReportPlan()"
+                                                    *ngIf="this.responseDataGrid.length>0"
+                                                    >
+                                                        <fa-icon [icon]="faReport"></fa-icon>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- termina la construccion de los campos dinamicamente -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                </form>
+            </ng-template>
+        </li>
+    </ul>
+</div>
+
+<div [ngbNavOutlet]="nav"></div>

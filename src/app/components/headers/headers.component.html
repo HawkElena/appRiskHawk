@@ -1,0 +1,89 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary colorGT ">
+    <div class="container-fluid" >
+        <a class="navbar-brand colorTextoBarra" >{{tituloApp}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div  class="collapse navbar-collapse "  id="navbarSupportedContent" *ngIf="isLoggedIn()">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle colorTextoBarra" href="#" data-bs-toggle="dropdown">Catalogos </a>
+                    <ul class="dropdown-menu colorTextoBarra">
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/group">Grupos</a>
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/homes">Probabilidad</a>
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/homess">Severidad</a>
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/homesss">Catalogos</a>
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/homessss">xxx</a>
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/event">Eventos</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- <a class="nav-link active colorTextoBarra" aria-current="page" [routerLinkActive]="['activado']" routerLink="/home">Catalogos</a> -->
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle colorTextoBarra " href="#" data-bs-toggle="dropdown">Evaluacion</a>
+                    <ul class="dropdown-menu colorTextoBarra">
+                        <li > 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link active colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/matrix">Matrix Evaluacion</a>
+                
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link active colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/plan">Plan Evaluacion</a>
+                
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle colorTextoBarra " href="#" data-bs-toggle="dropdown">Reportes</a>
+                    <ul class="dropdown-menu colorTextoBarra">
+                        <li > 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link active colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/reportMatrix">Reporte Matrix Evaluacion</a>
+                
+                        </li>
+                        <li> 
+                            <!-- <a class="dropdown-item" href="#"> Dropdown item 1 </a> -->
+                            <a class="nav-link active colorTextoBarra hoversubitem" aria-current="page" [routerLinkActive]="['activado']" routerLink="/reportPlan">Reporte Plan Evaluacion</a>
+                
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a class="nav-link active colorTextoBarra" aria-current="page" [routerLinkActive]="['activado']" routerLink="/matrix">Matrix Evaluacion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active colorTextoBarra" aria-current="page" [routerLinkActive]="['activado']" routerLink="/plan">Plan Evaluacion</a>
+                </li> -->
+
+            </ul>
+
+        </div>
+        <div class="pull-right">
+            <button *ngIf="! isLoggedIn()" type="button" class=" btn btn-success" routerLink="/login" >
+                <fa-icon [icon]=faSignIn ></fa-icon> LogIn</button>
+            <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" routerLink="/login" (click)="logout()" >
+                <fa-icon [icon]=faSignOut></fa-icon> LogOut</button>
+        </div>
+    </div>
+</nav>

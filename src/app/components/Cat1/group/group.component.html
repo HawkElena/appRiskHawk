@@ -1,0 +1,35 @@
+<app-user-control-form  [titulo]="titulo"
+                        [controlesForm]= "ControlsCatalog"
+                        (eventSearch)="open(contentListar);onSearch($event)"
+                        (eventOnSelect)="selectItemEvent($event)"
+                        (eventRefresh)="clearForm($event)"
+                        (eventSave)="guardarRow($event)"
+                        (eventOnChangeInput)="changeInputEvent($event)"
+                        (eventDelete)="deleteRow($event)"
+                        > 
+</app-user-control-form>
+
+<ng-template #contentListar let-c="close" let-d="dismiss">
+  <div class="modal-header d-block">
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')" style="float:right">
+          
+        </button>
+        
+        <div class="row">
+          <div class="col-md-12" style=" text-align: center; color: #576778;">
+            <h2 class="modal-title text-center">{{busqueda_titulo}}</h2>
+          </div>
+
+        </div>
+    
+      </div>
+
+        <app-user-control-search [ControlsFilter]="ctrlFiltersBusqueda"
+        [headerInput]="camposHeaderTabla"
+        [resultSetData]="responseDataGrid"
+        (eventSearch)="buscarRegistros($event)"
+        (eventEdit)="d('Cross click');rowSelected($event)"
+        >
+        </app-user-control-search>  
+
+</ng-template>

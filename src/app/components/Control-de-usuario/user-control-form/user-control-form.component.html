@@ -1,0 +1,260 @@
+<div class="col-md-12">
+    <ul  ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs tope-margen-ngnav">
+        <li [ngbNavItem]="1" >
+            <a ngbNavLink class="colortitulo" >{{titulo}}</a>
+            <ng-template ngbNavContent>
+                <form>
+                    <!-- <div class="row"> -->
+                        <!-- <div class="col-md-12 "> -->
+                            <br>
+                            <div class="box box-primary posicion-tope">
+                                <div class="box-header with-border d-block">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3
+                                                [ngClass]="{'letra_titulo_nuevo': editando === 0 , 'letra_titulo_editando': editando === 1}">
+                                                {{titulo}}
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body" id="apartado_controlForm">
+
+                                    <!-- hawk inicia -->
+
+                                    <div class="container-fluid">
+
+                                        <form class="col-md-12" style="margin-left: -15px;">
+                                            <!-- empieza la construccion de los campos dinamicos -->
+                                            <div *ngFor="let divNum of arrDivData">
+                                                <div class={{divNum.firstDivClass}}>
+                                                    <div class="{{divNum.secondDivClass}}">
+                                                        <div class="{{divNum.thirdDivClass}}">
+                                                            <!-- <div class="{{divNum.fourthDivClass}}" *ngFor="let control of this.controlesForm" -->
+                                                            <div  *ngFor="let control of this.controlesForm"  [ngClass]="{ 'form-group col-md-1'    : control._ngClassCol === 1
+                                                                                                                        , 'form-group col-md-2'     : control._ngClassCol === 2
+                                                                                                                        , 'form-group col-md-3'     : control._ngClassCol === 3
+                                                                                                                        , 'form-group col-md-4'     : control._ngClassCol === 4
+                                                                                                                        , 'form-group col-md-5'     : control._ngClassCol === 5
+                                                                                                                        , 'form-group col-md-6'     : control._ngClassCol === 6
+                                                                                                                        , 'form-group col-md-7'     : control._ngClassCol === 7
+                                                                                                                        , 'form-group col-md-8'     : control._ngClassCol === 8
+                                                                                                                        , 'form-group col-md-9'     : control._ngClassCol === 9
+                                                                                                                        , 'form-group col-md-10'    : control._ngClassCol === 10 
+                                                                                                                        , 'form-group col-md-11'    : control._ngClassCol === 11
+                                                                                                                        ,'form-group col-md-12'     : (control._ngClassCol === 12 || control._ngClassCol === 0)
+                                                                                                                        }">
+                                                                                                                        
+                                                                <label class="tamanyo_letra_labelp"
+                                                                    for='txt{{control._nombre}}'>{{control._nombre}}
+                                                                </label>
+
+                                                                <textarea (input)="handleInput($event)"   
+                                                                [disabled]= "control._ngDeshabilitar"
+                                                                *ngIf="control._tipoControlHTML =='TextArea_'"
+                                                                value="{{control._valorSeleccionado}}"
+                                                                placeholder='{{control._placeholder}}' 
+                                                                id="{{control._idTipoControHTML}}"
+                                                                class="{{control._estilosCSS}}"
+                                                                name='txtarea{{control._nombre}}'
+                                                                [attr.maxlength]="control._maximolargo"  
+                                                                rows="{{control._rowstxtarea}}"
+                                                                required = "{{control._esRequerido}}"
+                                                                [(ngModel)]="control._ngModelarr"
+                                                                [readonly] = "control._readonly"
+                                                                >{{control._ngModelarr}}
+                                                                </textarea>
+
+
+                                                                <div class="input-group">
+                                                                    <input (input)="handleInput($event)"   
+                                                                        [disabled]= "control._ngDeshabilitar"
+                                                                        *ngIf="control._tipoControlHTML =='Input_'"
+                                                                        value="{{control._valorSeleccionado}}"
+                                                                        placeholder='{{control._placeholder}}' 
+                                                                        id="{{control._idTipoControHTML}}"
+                                                                        class="{{control._estilosCSS}}"
+                                                                        [ngClass]="control._ngClass"
+                                                                        name='txt{{control._nombre}}'
+                                                                        [attr.maxlength]="control._maximolargo" 
+                                                                        required = "{{control._esRequerido}}"
+                                                                        type="{{control._type}}"
+                                                                        [readonly] = "control._readonly"
+                                                                    >
+                                                                    <div class="alert alert-danger" *ngIf = "control._nombre =='' ">
+                                                                        Last Name is required.
+                                                                    </div>
+
+                                                                    <p *ngIf="control._tipoControlHTML =='Input_s'">You have
+                                                                        entered {{control._valTipoControlHTML}}
+                                                                    </p>
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" *ngIf="control._requiereBtn" [ngClass]="control._ngClassBtn"
+                                                                            id="{{control._idBtnHTML}}"
+                                                                            style="display: right;" (click)="handleBtn($event)">
+                                                                            <fa-icon id="faicon1"   *ngIf="control._faIconBtn == 1" [icon]=faSearch></fa-icon>
+                                                                            <fa-icon id="faicon2"   *ngIf="control._faIconBtn == 2" [icon]=faSave></fa-icon>
+                                                                            <fa-icon id="faicon3"   *ngIf="control._faIconBtn == 3" [icon]=faDelete></fa-icon>
+                                                                            <fa-icon id="faicon4"   *ngIf="control._faIconBtn == 4" [icon]=faEdit></fa-icon>
+                                                                            <fa-icon id="faicon5"   *ngIf="control._faIconBtn == 5" [icon]=faRefresh></fa-icon>
+                                                                            <fa-icon id="faicon6"   *ngIf="control._faIconBtn == 6" [icon]=faPlus></fa-icon>
+                                                                            <fa-icon id="faicon7"   *ngIf="control._faIconBtn == 7" [icon]=faMinus></fa-icon>
+                                                                            
+                                                                        </button>
+                                                                    </span>
+    
+                                                                </div>
+
+
+                                                                
+
+                                                                <input (input)="handleInput($event)"   
+                                                                    [disabled]= "control._ngDeshabilitar"
+                                                                    *ngIf="control._tipoControlHTML =='InputButton_'"
+                                                                    value="{{control._valorSeleccionado}}"
+                                                                    placeholder='{{control._placeholder}}' 
+                                                                    id="{{control._idTipoControHTML}}"
+                                                                    class="{{control._estilosCSS}}"
+                                                                    [ngClass]="control._ngClass"
+                                                                    name='txt{{control._nombre}}'
+                                                                    [attr.maxlength]="control._maximolargo" 
+                                                                    required = "{{control._esRequerido}}"
+                                                                    type="{{control._type}}"
+                                                                    [readonly] = "control._readonly"
+                                                                >
+                                                                <!-- <fa-icon [icon]=faSearch></fa-icon> -->
+
+
+                                                                <select (change)="handleSelect($event)"  
+                                                                    [disabled]= "control._ngDeshabilitar"
+                                                                    *ngIf="control._tipoControlHTML == 'Select_'"
+                                                                    id="{{control._idTipoControHTML}}"
+                                                                    name='select{{control._nombre}}'
+                                                                    class="{{control._estilosCSS}}"
+                                                                    >
+                                                                    <!-- <option id = "optest0"  [value]="0" [selected]="true" disabled >Elige un criterio</option> -->
+                                                                    <option *ngFor="let opts of control._optionListJson" 
+                                                                        id="{{control._idTipoControHTML}}{{opts._indice}}"
+                                                                        [value]="opts._indice" 
+                                                                        [selected] = "opts._esSeleccionado"
+                                                                        [disabled] = "opts._esInactivo"
+                                                                        >
+                                                                        {{opts._valor}}
+                                                                    </option>
+                                                                </select>
+                                                                <p *ngIf="control._tipoControlHTML =='Select_s'">
+                                                                    usted haseleccionado {{
+                                                                    control._valTipoControlHTML}}
+                                                                </p>
+                                                                
+                                                            <!-- </div>  -->
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- inicia de la botonera en modalidad de sm a md -->
+                                                        <div class="row d-md-none mt-3 mb-0" >
+                                                            <!-- <div class="row" style="float: right; border-style: double;"></div> -->
+                                                            <div class="col-md-12" >
+                                                                <div class="row">
+                                                                    <div class="col-md-3 d-grid gap-2 mb-3 ">
+                                                                        <button type="button" class="btn btn-outline-primary btn-block " (click)="searchEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faSearch></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <br>
+                                                                    <div class="col-md-3 d-grid gap-2 mb-3">
+                                                                        <button type="button" class="btn btn-outline-success btn-block " (click)="saveEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faSave></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    
+                                                                    <div class="col-md-3 d-grid gap-2 mb-3">
+                                                                        <button type="button" class="btn btn-outline-warning btn-block " (click)="refreshEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faRefresh></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    <div class="col-md-3 d-grid gap-2 mb-3">
+                                                                        <button type="button" class="btn btn-outline-danger btn-block " (click)="deleteEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faDelete></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <!-- finaliza de la botonera en modalidad de sm a md -->
+                                                        
+                                                        <!-- inicia de la botonera en modalidad de md a lg -->                                                        
+                                                        <div class="row d-none d-md-block mt-3 mb-0 floatR" >
+                                                            <div class="col-md-12" >
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <button type="button" class="btn btn-outline-primary btn-block " (click)="searchEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faSearch></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <br>
+                                                                    <div class="col-md-3">
+                                                                        <button type="button" class="btn btn-outline-success btn-block " (click)="saveEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faSave></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    
+                                                                    <div class="col-md-3">
+                                                                        <button type="button" class="btn btn-outline-warning btn-block " (click)="refreshEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faRefresh></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    <div class="col-md-3">
+                                                                        <button type="button" class="btn btn-outline-danger btn-block " (click)="deleteEvent(this.controlesForm)">
+                                                                            <fa-icon [icon]=faDelete></fa-icon>
+                                                                        </button>
+                                                                        
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <!-- finaliza de la botonera en modalidad de md a lg -->
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- termina la construccion de los campos dinamicamente -->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
+                </form>
+            </ng-template>
+        </li>
+    </ul>
+</div>
+
+<div [ngbNavOutlet]="nav"></div>

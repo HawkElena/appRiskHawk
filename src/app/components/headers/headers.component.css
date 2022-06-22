@@ -1,0 +1,66 @@
+.pull-right {
+    float: right;
+  }
+  .colorTextoBarra{
+    color: white !important;
+    background-color: #00A3E0;
+  }
+  .colorGT{
+    background-color: #00A3E0 !important;
+  }
+
+  /* aqui empieza los efectos */
+  .navbar {
+    background: #000000
+}
+
+.activado{
+  font-weight: bold;
+  background: whitesmoke;
+  color: #00A3E0 !important;
+
+}
+
+.hoversubitem:hover{
+  width: 100%;
+  background-color: whitesmoke;
+  color: #00A3E0 !important;
+  transition: 0.99s
+}
+
+/* a {
+  text-decoration: none;
+  transition: color .4s ease;
+} */
+.nav-item::after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 2px;
+    background: #fec400;
+    transition: 0.4s
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    background-color: red;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fec400
+}
+
+.nav-link {
+    /* padding: 25px 5px; */
+    transition: 0.4s;
+    color: #fec400;
+}
+
+body{
+    background-color:grey;
+}

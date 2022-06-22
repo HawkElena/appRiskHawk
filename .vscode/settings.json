@@ -1,0 +1,5 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1515d201-35ab-4b42-8430-3a908e24d545/microsoft.web/sites/subscriptions/1515d201-35ab-4b42-8430-3a908e24d545/resourceGroups/HawkRisk/providers/Microsoft.Web/sites/hawkRiskApp",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"]
+}

@@ -1,0 +1,36 @@
+.anotherhover tbody tr:hover td { background: #A5E9FF; }
+
+.tamanyo_letra_labelp{
+    color: #3c8dbc !important;
+    font-size: 12px;
+  }
+  .tamanyo_letra_inputp{
+    color:#364951 !important;
+    font-size: 12px;
+    /* color: #999; */
+  }
+  
+  .tamanyo_letra_buttonp{
+    /* color:#364951 !important; */
+    font-size: 15px;
+    /* color: #999; */
+  }
+  
+/* aqui inicia lo de luis 28062020 */
+.letra_titulo_nuevo{
+  color:#364951 !important;
+  font-size: 20px;
+  text-align: center;
+}
+.letra_titulo_editando{
+  color:#DA2A1B !important;
+  font-size: 20px;
+  text-align: center;
+}
+/* aqui termina lo de luis 28062020 */
+.pull-right {
+  float: right;
+}
+.anchoColumna{
+  width: 50%;
+}

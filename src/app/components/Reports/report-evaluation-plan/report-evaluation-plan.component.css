@@ -1,0 +1,115 @@
+
+.firstMargen{
+    margin: 15px;
+  }
+  /* finaliza para que tengan un tamaño y el fondo adecuado los input y label en las forms */
+  .tamanyo_letra_labelp{
+      color: #3c8dbc !important;
+      font-size: 13px;
+    }
+    .tamanyo_letra_inputp{
+      color:#364951 !important;
+      font-size: 13px;
+      /* color: #999; */
+    }
+
+    .tamanyo_letra_buttonp{
+      /* color:#364951 !important; */
+      font-size: 15px;
+      /* color: #999; */
+    }
+    
+    .text_campo_requerido{
+      color: red;
+      font-size: 12px;
+    }
+    .tamanyo_letra_btnp{
+      /* color: #28a745 */
+      /* outline-style: none; */
+      /* margin-right: 2px; */
+      font-size: smaller;
+    }
+    .letra_titulo_nuevo{
+      color:#364951 !important;
+      font-size: 20px;
+      text-align: center;
+    }
+    .letra_titulo_editando{
+      color:#DA2A1B !important;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .floatR{
+      float: right;
+    }
+    /* para el box */
+    
+    .textWhite{
+      color:#dce6eb !important;
+    }
+    .textDark{
+      color:#202122 !important;
+    }
+/* para que en los tabs este mas cerca en el top para abarcar menos espacio */
+.tope-margen-ngnav{
+  max-width: 97%;
+  margin-top: 6px;
+}
+.posicion-tope{
+  margin-top: -20px;
+  margin-left: 16px; 
+}
+
+ .box {
+  position: relative;
+  border-radius: 3px;
+  background: #ffffff;
+  border-top: 3px solid #d2d6de;
+  margin-bottom: 20px;
+  width: 95%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.box.box-primary {
+  border-top-color: #3c8dbc;
+}
+
+.box-header {
+  color: #444;
+  display: block;
+  padding: 10px;
+  position: relative;
+}
+.box-header .box-title {
+  display: inline-block;
+  font-size: 18px;
+  margin: 0;
+  line-height: 1;
+}
+.box-body {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 10px;
+  background: #E5E8E8;
+}
+
+.box-header > .box-tools {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.box-header > .box-tools [data-toggle="tooltip"] {
+  position: relative;
+}
+.box-header > .box-tools.pull-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.box-header > .box-tools .dropdown-menu > li > a {
+  color: #444!important;
+}
+
+
+    /* fin del box */

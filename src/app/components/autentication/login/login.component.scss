@@ -1,0 +1,144 @@
+.img-fondo-centrado {
+  // background-image: url("../../../../assets/img/fondo1.jpg"); 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999;
+  position: absolute;
+  z-index: -100;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.superponer{
+  border-radius: 35px; 
+  background-color:#EFF2F1; 
+  opacity: 0.90; 
+  position: absolute !important;
+  left: 40%;
+  top: 35%;
+  margin: auto;
+  z-index: 3;
+}
+.img-fondo{
+    /* background-image: url("../../assets/img/login2.jpg"); */
+    /* background-repeat: no-repeat; */
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -100;
+    opacity: 1.0;
+  }
+  
+  .loader--text {
+      position: absolute;
+      top: 200%;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    .loader--text:after {
+      content: "Loading";
+      font-weight: bold;
+      animation-name: loading-text;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+    }
+    
+  .loader-container-max{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    top: 50%;
+    left: 47%;
+    z-index: 1;
+  }
+  
+  .loader-container-max .loader1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: solid 4px transparent;
+    border-top-color: #c35928;
+    border-left-color: #c35928;
+    border-radius: 50%;
+    animation: loader 1.2s linear infinite;
+  }
+  .loader-container-max .loader2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    border: solid 4px transparent;
+    border-top-color: #9CD0EA;
+    border-left-color: #9CD0EA;
+    border-radius: 50%;
+    animation: loader2 1.2s linear infinite;
+  }
+  
+  
+  .loader-container-min{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    top: 98%;
+    left: 39%;
+    z-index: 2;
+  }
+  
+  .loader-container-min .loader1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: solid 4px transparent;
+    border-top-color: #c35928;
+    border-left-color: #c35928;
+    border-radius: 50%;
+    animation: loader 1.2s linear infinite;
+  }
+  .loader-container-min .loader2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    border: solid 4px transparent;
+    border-top-color: #9CD0EA;
+    border-left-color: #9CD0EA;
+    border-radius: 50%;
+    animation: loader2 1.2s linear infinite;
+  }
+  
+
+  
+  @keyframes loader{
+    0%{
+      transform: translate(-50%,  -50%) rotate(0deg);
+    }
+    100%{
+      transform: translate(-50%,  -50%) rotate(360deg);
+  
+    }
+  }
+  
+  @keyframes loader2{
+    0%{
+      transform: translate(-50%,  -50%) rotate(0deg);
+    }
+    100%{
+      transform: translate(-50%,  -50%) rotate(-360deg);
+  
+    }
+  }
+  

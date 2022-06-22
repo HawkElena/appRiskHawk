@@ -1,0 +1,163 @@
+<!-- Modal que muestra el listado de tipo de actividades -->
+
+<div class="modal-body" >
+    <!-- aqui la tabla con el records de pagos -->
+    <div class="row" *ngIf="true">
+        <div *ngFor="let divNum of arrDivData">
+            <div class={{divNum.firstDivClass}}>
+                <div class="{{divNum.secondDivClass}}">
+                    <div class="{{divNum.thirdDivClass}}">
+                        <div  *ngFor="let control of this.ControlsFilter"  [ngClass]="{ 'form-group col-md-1 mb-3'    : control._ngClassCol === 1
+                                                                                        , 'form-group col-md-2  mb-3'     : control._ngClassCol === 2
+                                                                                        , 'form-group col-md-3  mb-3'     : control._ngClassCol === 3
+                                                                                        , 'form-group col-md-4  mb-3'     : control._ngClassCol === 4
+                                                                                        , 'form-group col-md-5  mb-3'     : control._ngClassCol === 5
+                                                                                        , 'form-group col-md-6  mb-3'     : control._ngClassCol === 6
+                                                                                        , 'form-group col-md-7  mb-3'     : control._ngClassCol === 7
+                                                                                        , 'form-group col-md-8  mb-3'     : control._ngClassCol === 8
+                                                                                        , 'form-group col-md-9  mb-3'     : control._ngClassCol === 9
+                                                                                        , 'form-group col-md-10 mb-3'    : control._ngClassCol === 10 
+                                                                                        , 'form-group col-md-11 mb-3'    : control._ngClassCol === 11
+                                                                                        ,'form-group col-md-12  mb-3'     : (control._ngClassCol === 12 || control._ngClassCol === 0)
+                                                                                        }">
+                            <label class="tamanyo_letra_labelp" for='txt{{control._nombre}}'>{{control._nombre}}
+                            </label>
+                            
+                            <textarea (input)="handleInput($event)" 
+                                        [disabled]="control._ngDeshabilitar"
+                                        *ngIf="control._tipoControlHTML =='TextArea_'" 
+                                        value="{{control._valorSeleccionado}}"
+                                        placeholder='{{control._placeholder}}' 
+                                        id="{{control._idTipoControHTML}}" 
+                                        class="{{control._estilosCSS}}"
+                                        name='txt{{control._nombre}}' 
+                                        [attr.maxlength]="control._maximolargo" 
+                                        rows="{{control._rowstxtarea}}"
+                                        required="{{control._esRequerido}}" 
+                                        [(ngModel)]="control._ngModelarr">
+                                        {{control._ngModelarr}}
+                            </textarea>
+                            
+                            <input (input)="handleInput($event)" 
+                                    [disabled]="control._ngDeshabilitar" 
+                                    *ngIf="control._tipoControlHTML =='Input_'"
+                                    value="{{control._valorSeleccionado}}" 
+                                    placeholder='{{control._placeholder}}' 
+                                    id="{{control._idTipoControHTML}}"
+                                    class="{{control._estilosCSS}}" 
+                                    name='txt{{control._nombre}}' 
+                                    [attr.maxlength]="control._maximolargo"
+                                    required="{{control._esRequerido}}" 
+                                    type="{{control._type}}">
+                            <div class="alert alert-danger" 
+                                *ngIf="control._nombre =='' ">
+                                Last Name is required.
+                            </div>
+                            
+                            <p *ngIf="control._tipoControlHTML =='Input_s'">You have
+                                entered {{control._valTipoControlHTML}}</p>
+                            
+                            <select (change)="handleSelect($event)" 
+                                    [disabled]="control._ngDeshabilitar"
+                                    *ngIf="control._tipoControlHTML == 'Select_'" 
+                                    id="{{control._idTipoControHTML}}" 
+                                    name='select{{control._nombre}}'
+                                    class="{{control._estilosCSS}}">
+                                <!-- <option id = "optest0"  [value]="0" [selected]="true" disabled >Elige un criterio</option> -->
+                                <option *ngFor="let opts of control._optionListJson" 
+                                        id="{{control._idTipoControHTML}}{{opts._indice}}"
+                                        [value]="opts._indice" 
+                                        [selected]="opts._esSeleccionado" 
+                                        [disabled]="opts._esInactivo">
+                                    {{opts._valor}}
+                                </option>
+                            </select>
+                            <p *ngIf="control._tipoControlHTML =='Select_s'">
+                                usted haseleccionado {{
+                                control._valTipoControlHTML}}
+                            </p>
+
+                            <!-- <button type="button" *ngIf="control._tipoControlHTML =='Button_'" class="{{control._estilosCSS}}"
+                            id="{{control._idBtnHTML}}"
+                            (click)="searchEvent($event)">
+                            <fa-icon id="faicon1"   [icon]=faSearch></fa-icon>
+                            <fa-icon id="faicon2"   *ngIf="control._faIconBtn == 2" [icon]=faSave></fa-icon>
+                            <fa-icon id="faicon3"   *ngIf="control._faIconBtn == 3" [icon]=faDelete></fa-icon>
+                            <fa-icon id="faicon4"   *ngIf="control._faIconBtn == 4" [icon]=faEdit></fa-icon>
+                            <fa-icon id="faicon5"   *ngIf="control._faIconBtn == 5" [icon]=faRefresh></fa-icon>
+                            <fa-icon id="faicon6"   *ngIf="control._faIconBtn == 6" [icon]=faPlus></fa-icon>
+                            <fa-icon id="faicon7"   *ngIf="control._faIconBtn == 7" [icon]=faMinus></fa-icon>
+                            
+                        </button> -->
+
+                            <button type="button" class="{{control._estilosCSS}}" 
+                                    *ngIf="control._tipoControlHTML =='Button_'"
+                                    (click)="searchEvent('algo')">
+                                    <fa-icon id="faicon1"   *ngIf = "control._faIconBtn == 1" [icon]=faSearch></fa-icon>
+                                    <fa-icon id="faicon2"   *ngIf = "control._faIconBtn == 2" [icon]=faSave></fa-icon>
+                                    <fa-icon id="faicon3"   *ngIf = "control._faIconBtn == 3" [icon]=faDelete></fa-icon>
+                                    <fa-icon id="faicon4"   *ngIf = "control._faIconBtn == 4" [icon]=faEdit></fa-icon>
+                                    <fa-icon id="faicon5"   *ngIf = "control._faIconBtn == 5" [icon]=faRefresh></fa-icon>
+                                    <fa-icon id="faicon6"   *ngIf = "control._faIconBtn == 6" [icon]=faPlus></fa-icon>
+                                    <fa-icon id="faicon7"   *ngIf = "control._faIconBtn == 7" [icon]=faMinus></fa-icon>
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="true">
+
+        <div class="col-md-12">
+            <div class="col-md-12 table-responsive-sm">
+                <table class="table table-sm anotherhover table-striped">
+                    <thead class="tamanyo_letra_labelp">
+                        <tr >
+                            <th *ngFor="let header of this.headerInput" scope="col" class=" {{header._cssStyle}}" >
+                                <span *ngIf="header._esVisible" >{{header._valor}}</span>    
+                            </th>
+                            <!-- <th *ngFor="let header of headerInput" scope="col">{{header}}</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let row of this.resultSetData |slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let intContador = index "
+                        class="tamanyo_letra_inputp">
+                        <td *ngFor="let header of this.headerInput" [ngStyle]="{'padding-top': '0px','padding-bottom': '0px'}" >
+                            <div *ngIf="header._nomCampo =='_status'; then divStatus else noDivStatus"></div>
+                            <ng-template #divStatus>
+                                <span *ngIf="resultSetData[intContador + ((page-1)*pageSize)][header._nomCampo]== true">Habilitado</span>
+                                <span *ngIf="resultSetData[intContador + ((page-1)*pageSize)][header._nomCampo]== false">Deshabilitado</span>                    
+                            </ng-template>
+                            <ng-template #noDivStatus>
+                                <span *ngIf="header._nomCampo != '_accion' && header._esVisible==true">
+                                    {{resultSetData[intContador + ((page-1)*pageSize)][header._nomCampo]}} 
+                                </span>
+                                <span *ngIf="header._nomCampo == '_accion' && header._esVisible==true">
+                                    <a class="btn btn-outline-primary text-info tamanyo_letra_buttonp"  *ngIf="header._btnIconAccion == '1'"
+                                        (click)="('Cross click');showForEdit(row)">
+                                        <fa-icon [icon]=faEdit></fa-icon>                                        
+                                    </a>
+                                    <a class="btn btn-outline-danger text-withe tamanyo_letra_buttonp" *ngIf="header._btnIconAccion == '2'"
+                                        (click)="showForDelete(row)">
+                                        <fa-icon [icon]=faDelete></fa-icon>                                        
+                                    </a>
+                                </span>
+                            </ng-template>                    
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                
+                <ngb-pagination class="pull-right" [collectionSize]="this.resultSetData.length" [(page)]="page" 
+                    [maxSize]="5" [rotate]="false" [ellipses]="false" [boundaryLinks]="true">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+</div> -->
